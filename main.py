@@ -26,7 +26,11 @@ from random import choice
 from datetime import datetime
 from termcolor import colored
 from src import random_sentences
+from functions import artificial_inteligence
 
+
+import logging
+print([logging.getLogger(name) for name in logging.root.manager.loggerDict])
 
 
 # Necesary variables
@@ -140,7 +144,7 @@ if __name__ == "__main__":
                         answer(f"Buscando actualizaciones para {sysname}. Introduce la contraseña de root")
                         sp.run('sudo apt update', shell=True)
                         print(colored("> ", 'green') + "Instalando actualizaciones")
-                        answer("Instalando acutalizaciones")
+                        answer("Instalando actualizaciones")
                         sp.run('sudo parrot-upgrade', shell=True)
                         print(colored("> ", 'green') + "Sistema actualizado")
                         answer("Sistema actualizado")
@@ -162,10 +166,10 @@ if __name__ == "__main__":
                             answer("¡Sabia que no me dejarias! Bien hecho " + USERNAME)
 
 
-                    if 'activa la IA' in query or 'activa la inteligencia artificial' in quiery or 'enciende la IA' in query or 'enciende la inteligencia artificial' in query:
+                    if 'activa la IA' in query or 'activa la inteligencia artificial' in query or 'enciende la IA' in query or 'enciende la inteligencia artificial' in query:
                         print(colored("[+] ", 'green') + "Activando asistente de Inteligencia Artificial...")
                         answer("Activando asistente de Inteligencia Artificial")
-                        func.artificial_inteligence.main()
+                        artificial_inteligence.main()
 
 
                     # Despedida del usuario
