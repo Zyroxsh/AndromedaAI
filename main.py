@@ -29,10 +29,6 @@ from src import random_sentences
 from functions import artificial_inteligence
 
 
-import logging
-print([logging.getLogger(name) for name in logging.root.manager.loggerDict])
-
-
 # Necesary variables
 listener = sr.Recognizer()
 
@@ -94,12 +90,12 @@ if __name__ == "__main__":
                         answer("Abriendo terminal")
                         sp.run('/usr/bin/kitty | sleep 2 & disown', shell=True)
 
-                    if 'abre burpsuit' in query or 'abreme burpsuit' in query or 'abre el proxy' in query or 'abreme el proxy' in query:
+                    elif 'abre burpsuit' in query or 'abreme burpsuit' in query or 'abre el proxy' in query or 'abreme el proxy' in query:
                         print(colored("[+] ", 'green') + "Abriendo BurpSuite Proxy...")
                         answer("Abriendo BurpSuite Proxy")
                         sp.run('/usr/bin/burpsuite | sleep 5 & disown', shell=True)
 
-                    if 'cuenta un chiste' in query or 'cuéntame un chiste' in query or 'cuenta una broma' in query or 'cuéntame una broma' in query:
+                    elif 'cuenta un chiste' in query or 'cuéntame un chiste' in query or 'cuenta una broma' in query or 'cuéntame una broma' in query:
                         print(colored("> ", 'green') + "Voy a pensarla")
                         answer("Voy a pensarlo")
                         headers = {
@@ -117,7 +113,7 @@ if __name__ == "__main__":
                         os.remove('./audio/output.mp3')
 
 
-                    if 'busca en internet' in query or 'busca en google' in query or 'busca en gugel' in query or 'busca en googel' in query:
+                    elif 'busca en internet' in query or 'busca en google' in query or 'busca en gugel' in query or 'busca en googel' in query:
                         
                         if 'internet' in query:
                             lista = query.split()
@@ -136,7 +132,7 @@ if __name__ == "__main__":
                             kit.search(search)
 
 
-                    if 'actualiza el sistema' in query:
+                    elif 'actualiza el sistema' in query:
                         sysname = sp.check_output("lsb_release -a | grep --color=never 'Parrot' | awk '{print $2,$3,$4,$5}'", shell=True)
                         sysname = sysname.decode('utf-8').strip('\n')
                         sp.run('clear', shell=True)
@@ -150,7 +146,7 @@ if __name__ == "__main__":
                         answer("Sistema actualizado")
                         
 
-                    if 'apaga el equipo' in query or 'apaga el sistema' in query or 'apaga el ordenador' in query:
+                    elif 'apaga el equipo' in query or 'apaga el sistema' in query or 'apaga el ordenador' in query:
                         answer("¿Seguro que quieres apagar el sistema?")
                         apagar = input(colored("[!] ", 'yellow') + "¿Seguro que quieres apagar el sistema? [Y/n] " + colored('# ', 'red'))
 
@@ -166,10 +162,8 @@ if __name__ == "__main__":
                             answer("¡Sabia que no me dejarias! Bien hecho " + USERNAME)
 
 
-                    if 'activa la IA' in query or 'activa la inteligencia artificial' in query or 'enciende la IA' in query or 'enciende la inteligencia artificial' in query:
-                        print(colored("[+] ", 'green') + "Activando asistente de Inteligencia Artificial...")
-                        answer("Activando asistente de Inteligencia Artificial")
-                        artificial_inteligence.main()
+                    else:
+                        artificial_inteligence.main(query)
 
 
                     # Despedida del usuario
@@ -191,7 +185,7 @@ if __name__ == "__main__":
                             sys.exit()
 
 
-                except sr.UnknownValueError as e:
+                except sr.UnknownValueError:
                     print(colored("# ", 'red') + "???")
                     print(colored("> ", 'green') + "Lo siento señor, no le he entendido.")
                     answer("Lo siento señor, no le he entendido.")
