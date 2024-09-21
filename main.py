@@ -161,6 +161,7 @@ if __name__ == "__main__":
                             print(colored("> ", 'green') + "¡Sabía que no me dejarias! Bien hecho " + USERNAME)
                             answer("¡Sabia que no me dejarias! Bien hecho " + USERNAME)
 
+                    # Ask to the artificial inteligence module in functions/artificial_ingeligence.py
                     else:
                         artificial_inteligence.main(query)
 

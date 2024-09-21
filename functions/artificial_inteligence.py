@@ -14,7 +14,7 @@ from langchain_core.prompts import ChatPromptTemplate
 
 
 # Global variables
-model = OllamaLLM(model="dolphin-llama3")
+model = OllamaLLM(model="dolphin-mistral")
 
 
 
